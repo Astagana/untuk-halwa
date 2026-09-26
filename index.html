@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Untuk Halwa — dari Dias</title>
+<meta name="theme-color" content="#f7f1e7">
+<meta name="description" content="Ada beberapa hal yang belum sempat aku bilang.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- lapisan tekstur kertas -->
+<div class="grain" aria-hidden="true"></div>
+<canvas id="petals" aria-hidden="true"></canvas>
+<div id="burst" aria-hidden="true"></div>
+
+<!-- ============ GERBANG AWAL ============ -->
+<div class="gate" id="gate">
+  <div class="gate__box">
+    <p class="eyebrow">dari dias</p>
+    <h1 class="gate__title">Ada sesuatu<br><em>buat Halwa</em></h1>
+    <p class="gate__sub">Pelannya aja. Nyalain dulu suaranya.</p>
+    <button class="btn btn--ink" id="enterBtn">Buka <span aria-hidden="true">→</span></button>
+    <p class="gate__hint">6 halaman · lagunya otomatis jalan</p>
+  </div>
+</div>
+
+<!-- ============ SIDEBAR ============ -->
+<button class="menu-btn" id="menuBtn" aria-label="Buka menu">
+  <span></span><span></span>
+</button>
+<div class="scrim" id="scrim"></div>
+
+<aside class="sidebar" id="sidebar">
+  <header class="sidebar__head">
+    <div class="monogram"><span>D</span><i>&amp;</i><span>H</span></div>
+    <p class="sidebar__note">bukan surat panjang.<br>cuma yang nggak sempat aku bilang.</p>
+  </header>
+
+  <nav class="nav" id="nav" aria-label="Halaman">
+    <button class="nav__item is-active" data-go="0"><b>01</b><span>Pembuka</span></button>
+    <button class="nav__item" data-go="1"><b>02</b><span>Yang Aku Ingat</span></button>
+    <button class="nav__item" data-go="2"><b>03</b><span>Maaf</span></button>
+    <button class="nav__item" data-go="3"><b>04</b><span>Kenapa Kamu</span></button>
+    <button class="nav__item" data-go="4"><b>05</b><span>Kotak Surat</span></button>
+    <button class="nav__item" data-go="5"><b>06</b><span>Penutup</span></button>
+  </nav>
+
+  <div class="player" id="player">
+    <div class="player__meta">
+      <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+      <div class="player__txt">
+        <p class="player__title" id="trackTitle">song.mp3</p>
+        <p class="player__sub">putar pelan-pelan</p>
+      </div>
+    </div>
+    <div class="player__seek" id="seekBar" role="slider" aria-label="Geser lagu" tabindex="0">
+      <span id="seekFill"></span>
+    </div>
+    <div class="player__row">
+      <button class="player__btn" id="playBtn" aria-label="Putar / jeda">❚❚</button>
+      <span class="player__time"><span id="curTime">0:00</span> / <span id="durTime">0:00</span></span>
+      <input class="player__vol" id="vol" type="range" min="0" max="1" step="0.01" value="0.75" aria-label="Volume">
+    </div>
+  </div>
+
+  <p class="sidebar__foot">Dias <span>·</span> buat Halwa</p>
+</aside>
+
+<!-- ============ HALAMAN ============ -->
+<main class="stage" id="stage">
+
+  <!-- 01 PEMBUKA -->
+  <section class="page" data-page="0">
+    <div class="inner inner--narrow">
+      <p class="eyebrow">01 — pembuka</p>
+      <h2 class="h2">Hai, <em>Halwa.</em></h2>
+      <div class="prose">
+        <p class="drop">Kalau kamu sampai di halaman ini, berarti kamu masih mau dengerin aku. Sedikit aja nggak apa-apa. Aku udah nggak berani minta lebih dari itu.</p>
+        <p>Aku bikin ini bukan buat maksa kamu balik. Aku cuma pengen kamu tau apa yang sebenernya ada di kepala aku selama ini — yang nggak pernah aku omongin dengan bener.</p>
+        <p>Bacanya santai aja. Nggak usah buru-buru selesai.</p>
+      </div>
+      <p class="sign">— Dias</p>
+    </div>
+  </section>
+
+  <!-- 02 YANG AKU INGAT -->
+  <section class="page" data-page="1">
+    <div class="inner">
+      <p class="eyebrow">02 — yang aku ingat</p>
+      <h2 class="h2">Hal-hal kecil yang <em>nggak kamu tau</em> aku simpen.</h2>
+      <p class="lede">Klik satu-satu. Pelan-pelan.</p>
+      <div class="notes">
+        <button class="note">
+          <span class="note__front">Marah karena hal kecil dan enggaa penting.</span>
+          <span class="note__more">Padahal aku cuma ingin caper ke kamu.</span>
+        </button>
+        <button class="note">
+          <span class="note__front">Cara kamu ketawa waktu aku salah ngomong.</span>
+          <span class="note__more">Aku beberapa kali sengaja salah ngomong. Cuma biar denger itu lagi.</span>
+        </button>
+        <button class="note">
+          <span class="note__front">Chat kamu yang panjang, lengkap sama typo di mana-mana.</span>
+          <span class="note__more">Aku masih baca ulang beberapa. Sampai yang lama.</span>
+        </button>
+        <button class="note">
+          <span class="note__front">Kamu yang selalu minta maaf di saat aku marah.</span>
+          <span class="note__more">Padahal aku marah karna hal yang kecil.</span>
+        </button>
+        <button class="note">
+          <span class="note__front">Hujan-hujanan di jalan pulang itu.</span>
+          <span class="note__more">Kamu ngeluh sepanjang jalan, tapi kamu nggak pernah minta jalan lebih cepet.</span>
+        </button>
+        <button class="note">
+          <span class="note__front">Pas kamu minta putus di tengah malam yang akupun masih belum bangun.</span>
+          <span class="note__more">Jam itu yang paling aku inget dari semua jam yang pernah ada. Walaupun sakit, akuu tetap masih berusaha biar kamu berubah fikiran, tetapi kamu kekeh.</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 MAAF -->
+  <section class="page" data-page="2">
+    <div class="inner inner--narrow">
+      <p class="eyebrow">03 — permintaan maaf</p>
+      <h2 class="h2 h2--big">Maaf.</h2>
+      <p class="lede">Nggak pakai "tapi". Nggak pakai alasan.</p>
+      <ol class="faults">
+        <li>
+          <span class="faults__n">1</span>
+          <p>Aku lebih sering ngarep kamu ngerti daripada nyoba ngerti kamu.</p>
+        </li>
+        <li>
+          <span class="faults__n">2</span>
+          <p>Waktu kamu capek, aku malah nanya kenapa. Padahal yang kamu butuh cuma aku ada waktu dihidup kamu, nggak usah ngomong apa-apa.</p>
+        </li>
+        <li>
+          <span class="faults__n">3</span>
+          <p>Aku nunda-nunda minta maaf, sampai akhirnya kamu yang lelah duluan. Itu salah aku, bukan salah kamu.</p>
+        </li>
+      </ol>
+      <div class="prose prose--mt">
+        <p>Aku nggak bisa ngulang yang udah lewat, dan aku nggak akan pura-pura bisa. Yang bisa aku lakuin cuma satu: belajar. Pelan-pelan, dan beneran.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 KENAPA KAMU -->
+  <section class="page" data-page="3">
+    <div class="inner">
+      <p class="eyebrow">04 — kenapa kamu</p>
+      <h2 class="h2">Kalau ditanya kenapa, <em>jawabannya panjang.</em></h2>
+      <p class="lede">Balikin kartunya satu-satu.</p>
+      <div class="flips">
+        <button class="flip"><span class="flip__in">
+          <span class="flip__face">Cara kamu ketawa itu nggak bisa aku ulang.</span>
+          <span class="flip__back">Dan aku udah nyoba berkali-kali.</span>
+        </span></button>
+        <button class="flip"><span class="flip__in">
+          <span class="flip__face">Kamu bisa tau aku lagi kenapa-napa.</span>
+          <span class="flip__back">Bahkan lewat chat doang.</span>
+        </span></button>
+        <button class="flip"><span class="flip__in">
+          <span class="flip__face">Kamu nyoba suka hal yang aku suka. Beneran nyoba.</span>
+          <span class="flip__back">Sampe nyoba dan belajar.</span>
+        </span></button>
+        <button class="flip"><span class="flip__in">
+          <span class="flip__face">Kamu kuat, tapi kamu nggak takut keliatan capek di depan aku.</span>
+          <span class="flip__back">Itu berani. Dan itu langka.</span>
+        </span></button>
+        <button class="flip"><span class="flip__in">
+          <span class="flip__face">Chat kamu waktu bilang "udah, tidur".</span>
+          <span class="flip__back">Lebih menang dari obat tidur mana pun.</span>
+        </span></button>
+        <button class="flip"><span class="flip__in">
+          <span class="flip__face">Jadi sama kamu, aku nggak pernah harus jadi orang lain.</span>
+          <span class="flip__back">Itu yang paling mahal dari semuanya.</span>
+        </span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 KOTAK SURAT -->
+  <section class="page" data-page="4">
+    <div class="inner inner--narrow">
+      <p class="eyebrow">05 — kotak surat</p>
+      <h2 class="h2">Ada satu surat yang <em>belum aku kirim.</em></h2>
+
+      <div class="mailbox">
+        <button class="env" id="envBtn" aria-label="Buka surat">
+          <span class="env__back"></span>
+          <span class="env__paper"><span></span><span></span><span></span></span>
+          <span class="env__front"></span>
+          <span class="env__flap"></span>
+          <span class="env__seal">H</span>
+        </button>
+        <p class="mailbox__hint" id="envHint">klik amplopnya</p>
+      </div>
+
+      <div class="letter" id="letter">
+        <p class="letter__text" id="letterText"></p>
+        <div class="letter__actions" id="letterActions">
+          <a class="btn btn--wa" data-wa href="#" target="_blank" rel="noopener">
+            Aku kangen sama kamuu <span aria-hidden="true">↗</span>
+          </a>
+          <p class="micro">kalau kamu ngerasa sama. kalau nggak, nggak apa-apa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 PENUTUP -->
+  <section class="page" data-page="5">
+    <div class="inner inner--narrow">
+      <p class="eyebrow">06 — penutup</p>
+      <h2 class="h2">Aku nggak minta kamu <em>buru-buru.</em></h2>
+      <div class="prose">
+        <p>Kalau kamu butuh waktu, ambil aja. Kalau kamu butuh jauh, aku ngerti. Aku nggak akan ngitungin dan aku nggak akan nagih.</p>
+        <p>Aku cuma pengen kamu tau satu hal: apapun yang nanti kamu putusin, kamu nggak pernah jadi kesalahan. Kamu salah satu hal terbaik yang pernah kejadian di hidup aku.</p>
+        <p>Dan kalau suatu hari kamu ngerasa pengen ngobrol lagi — pintunya masih sama. Masih di tempat yang sama.</p>
+      </div>
+      <p class="hand">P.S. makasih udah mau baca sampai bawah. Itu udah lebih dari yang aku harapin.</p>
+      <div class="end-actions">
+        <a class="btn btn--wa" data-wa href="#" target="_blank" rel="noopener">
+          Aku kangen sama kamuu <span aria-hidden="true">↗</span>
+        </a>
+        <button class="btn btn--ghost" id="restart">Baca ulang dari awal</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ KONTROL HALAMAN ============ -->
+<div class="topbar"><span id="topFill"></span></div>
+
+<button class="pager pager--prev" id="prevBtn" aria-label="Halaman sebelumnya">
+  <span aria-hidden="true">←</span>
+</button>
+
+<button class="pager pager--next" id="nextBtn">
+  <span class="pager__label">Lanjut</span>
+  <span class="pager__arrow" aria-hidden="true">→</span>
+</button>
+
+<p class="counter"><span id="counterNow">01</span> / <span id="counterAll">06</span></p>
+
+<audio id="audio" src="song.mp3" loop preload="auto"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
