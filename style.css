@@ -293,7 +293,7 @@ body.nav-open .scrim{opacity:1;visibility:visible}
   position:fixed;z-index:56;transition:.4s var(--ease);
 }
 .pager--next{
-  right:0;top:50%;transform:translateY(-50%);
+  right:0;top:90%;transform:translateY(-50%);
   display:inline-flex;align-items:bottom;gap:15px;
   padding:15px 20px 15px 22px;border-radius:18px 0 0 18px;
   background:var(--ink);color:var(--paper);font-size:.8rem;font-weight:500;
